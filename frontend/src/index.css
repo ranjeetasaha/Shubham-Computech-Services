@@ -626,3 +626,32 @@ select {
     margin:6px 0;
 }
 
+.details-container{
+  min-height:100vh;
+  padding:40px;
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #ec4899
+  );
+}
+
+.details-container h1{
+  text-align:center;
+  color:white;
+  margin-bottom:30px;
+}
+
+.details-card{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.details-card p{
+  font-size:18px;
+  margin:15px 0;
+}

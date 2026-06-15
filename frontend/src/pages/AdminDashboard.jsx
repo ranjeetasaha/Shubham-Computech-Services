@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function AdminDashboard() {
@@ -7,6 +8,8 @@ function AdminDashboard() {
 
   const [searchTerm, setSearchTerm] =
     useState("");
+
+  const navigate = useNavigate();
 
   const updateStatus = (id, newStatus) => {
 
@@ -124,7 +127,11 @@ function AdminDashboard() {
                 .includes(searchTerm.toLowerCase())
             )
             .map((repair) => (
-            <tr key={repair.id}>
+            <tr
+              key={repair.id}
+              onClick={() => navigate(`/ticket/${repair.id}`)}
+              style={{ cursor: "pointer" }}
+            >
               <td>{repair.id}</td>
               <td>{repair.customer}</td>
               <td>{repair.mobile}</td>
@@ -136,6 +143,7 @@ function AdminDashboard() {
               <td>
                 <select
                   value={repair.status}
+                  onClick={(e) => e.stopPropagation()}
                   onChange={(e) =>
                     updateStatus(repair.id, e.target.value)
                   }
@@ -165,8 +173,11 @@ function AdminDashboard() {
               <td>
                <button
                 className="delete-btn"
-                onClick={() => deleteTicket(repair.id)}
-              >
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteTicket(repair.id);
+                }}
+               >
                 Delete
               </button>
               </td>

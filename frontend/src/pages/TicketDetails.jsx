@@ -11,18 +11,23 @@ function TicketDetails() {
   );
 
   if (!ticket) {
-    return <h2>Ticket Not Found</h2>;
+    return (
+      <div className="admin-container">
+        <h2>Ticket Not Found</h2>
+      </div>
+    );
   }
 
   return (
-    <div className="details-page">
-      <div className="details-card">
+    <div className="details-container">
 
-        <h1>Repair Details</h1>
+      <h1>Customer Details</h1>
+
+      <div className="details-card">
 
         <p><strong>Repair ID:</strong> {ticket.id}</p>
 
-        <p><strong>Customer:</strong> {ticket.customer}</p>
+        <p><strong>Customer Name:</strong> {ticket.customer}</p>
 
         <p><strong>Mobile:</strong> {ticket.mobile}</p>
 
@@ -38,7 +43,10 @@ function TicketDetails() {
 
         <p><strong>Status:</strong> {ticket.status}</p>
 
+        <p><strong>Expected Delivery:</strong> {ticket.delivery}</p>
+
       </div>
+
     </div>
   );
 }

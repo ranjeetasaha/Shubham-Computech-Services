@@ -11,6 +11,7 @@ import RepairSummary from "./pages/RepairSummary";
 import TrackRepair from "./pages/TrackRepair";
 import TrackingStatus from "./pages/TrackingStatus";
 import AdminDashboard from "./pages/AdminDashboard";
+import TicketDetails from "./pages/TicketDetails";
 
 function App() {
   return (
@@ -73,6 +74,10 @@ function App() {
           element={<AdminDashboard />}
         />
         
+        <Route
+          path="/ticket/:id"
+          element={<TicketDetails />}
+        />
       </Routes>
     </BrowserRouter>
   );
