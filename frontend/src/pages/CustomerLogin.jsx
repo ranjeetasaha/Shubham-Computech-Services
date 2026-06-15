@@ -45,10 +45,41 @@ function CustomerLogin() {
         />
 
         <textarea
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          value={notes}
+          onChange={(e) =>
+            setNotes(e.target.value)
+          }
+          rows="6"
+          style={{
+            width:"100%",
+            padding:"10px"
+          }}
         />
+
+
+        <button
+          onClick={() => {
+
+            const updatedTickets =
+              tickets.map((t) =>
+                t.id === id
+                  ? {
+                      ...t,
+                      notes
+                    }
+                  : t
+              );
+
+            localStorage.setItem(
+              "tickets",
+              JSON.stringify(updatedTickets)
+            );
+
+            alert("Notes Saved");
+          }}
+        >
+          Save Notes
+        </button>
 
         <button onClick={handleSubmit}>
           Continue

@@ -48,6 +48,7 @@ function RepairSummary() {
     status: "Device Received",
     cost: estimatedPrice,
     delivery: recoveryDate,
+    notes: ""
   };
 
   localStorage.setItem(
@@ -99,6 +100,20 @@ function RepairSummary() {
 
         <h2 style={{ color: "white" }}>Expected Delivery</h2>
         <p style={{ color: "yellow" }}>{latestTicket?.delivery}</p>
+        
+        <hr />
+
+        <h3>Repair Notes</h3>
+
+        <textarea
+          value={ticket.notes}
+          readOnly
+          rows="6"
+          style={{
+            width:"100%",
+            padding:"10px"
+          }}
+        />
 
       </div>
     </div>

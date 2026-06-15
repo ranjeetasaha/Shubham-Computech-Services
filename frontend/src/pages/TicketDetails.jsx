@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 function TicketDetails() {
   const { id } = useParams();
@@ -6,9 +7,13 @@ function TicketDetails() {
   const tickets =
     JSON.parse(localStorage.getItem("tickets")) || [];
 
-  const ticket = tickets.find(
-    (t) => t.id === id
-  );
+  const foundTicket =
+    tickets.find((t) => t.id === id);
+
+  const [notes, setNotes] =
+    useState(foundTicket?.notes || "");
+
+
 
   if (!ticket) {
     return (
