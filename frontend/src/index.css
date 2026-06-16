@@ -153,13 +153,6 @@ body{
   transform:translateX(10px);
 }
 
-.cards{
-    margin-top:60px;
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-}
 
 .repair-card,
 .form-card{
@@ -270,8 +263,6 @@ body{
 .admin-container{
   min-height:100vh;
 
-  padding:40px;
-
   background:
     linear-gradient(
     135deg,
@@ -281,8 +272,17 @@ body{
     );
 
   color: white;
-  max-width: 1400px;
   margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width:95%;
+
+  max-width:1600px;
+
+  padding:30px;
 }
 
 
@@ -305,19 +305,14 @@ body{
 
 table{
   width:100%;
-
   background:rgba(255,255,255,0.12);
-
   backdrop-filter:blur(15px);
-
   border-radius:30px;
-
   overflow:hidden;
-
   box-shadow:
-
-  0 10px 40px rgba(0,0,0,.15);
-
+    0 10px 40px rgba(0,0,0,.15);
+  min-width:1400px;
+  border-collapse:collapse;
 }
 th,
 td {
@@ -384,45 +379,6 @@ select{
   margin-bottom:30px;
 }
 
-.card{
-
-background:
-rgba(255,255,255,0.15);
-
-backdrop-filter:blur(12px);
-
-border-radius:25px;
-
-padding:35px;
-
-box-shadow:
-0 8px 30px rgba(0,0,0,.15);
-
-transition:.3s;
-
-color:white;
-
-}
-
-.card h2{
-
-font-size:42px;
-
-color:#4df38b;
-
-margin-bottom:10px;
-
-}
-.card:hover{
-
-transform:
-translateY(-7px);
-
-box-shadow:
-0 15px 40px rgba(0,0,0,.2);
-
-}
-
 .stats{
 
 display:grid;
@@ -485,6 +441,7 @@ box-shadow:
   box-shadow:
     0 8px 25px rgba(0,0,0,.1);
     margin-bottom:30px;
+  display: block;
 }
 
 .logo-container {
@@ -542,9 +499,9 @@ box-shadow:
 
     background: linear-gradient(
         90deg,
-        #2563eb 0%,
-        #7c3aed 50%,
-        #ec4899 100%
+        #0906c4 0%,
+        #801dc8 50%,
+        #d61385 100%
     );
 
     -webkit-background-clip: text;
@@ -866,11 +823,12 @@ box-shadow:
 }
 
 .admin-header{
+  width: 100%;
+  max-width: 1450px;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:40px;
-
 }
 
 .admin-logo{
@@ -891,4 +849,118 @@ box-shadow:
   color:white;
   font-weight:bold;
   cursor:pointer;
+}
+
+.card{
+  width: 320px;
+  height: 150px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;   /* Vertical center */
+  align-items: center;       /* Horizontal center */
+
+  text-align: center;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+
+  transition: .3s;
+}
+
+.card h2{
+font-size:42px;
+color:#4df392;
+margin-bottom:10px;
+}
+
+.card:hover{
+  transform:
+  translateY(-7px);
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.2);
+}
+
+.cards{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:40px;
+  margin-top:60px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:1200px){
+
+.cards{
+  flex-direction:column;
+  align-items:center;
+}
+
+.repair-card,
+.form-card{
+  width:90%;
+  max-width:600px;
+}
+
+}
+
+.edit-input{
+  width:110px;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  text-align:center;
+  font-size:15px;
+  background:white;
+  outline:none;
+}
+
+.invoice-btn{
+
+padding:12px 18px;
+
+border:none;
+
+border-radius:10px;
+
+background:linear-gradient(
+45deg,
+#2563eb,
+#9333ea
+);
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.invoice-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+}
+
+.table-container{
+
+width:100%;
+
+overflow-x:auto;
+
+margin-top:40px;
+
+border-radius:25px;
+
 }

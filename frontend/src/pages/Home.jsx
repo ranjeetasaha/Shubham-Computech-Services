@@ -77,7 +77,7 @@ function Home() {
           </ul>
         </div>
 
-       <div className="form-card">
+        <div className="form-card">
           <h2>📄 Form Filling</h2>
 
           <ul>
