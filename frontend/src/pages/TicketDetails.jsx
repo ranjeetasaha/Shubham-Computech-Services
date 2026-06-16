@@ -13,15 +13,31 @@ function TicketDetails() {
   const [notes, setNotes] =
     useState(foundTicket?.notes || "");
 
-
-
-  if (!ticket) {
+  if (!foundTicket) {
     return (
-      <div className="admin-container">
+        <div className="admin-container">
         <h2>Ticket Not Found</h2>
-      </div>
+        </div>
     );
   }
+
+  const saveNotes = () => {
+    const updatedTickets = tickets.map((t) =>
+      t.id === id
+        ? {
+            ...t,
+            notes: notes,
+          }
+        : t
+    );
+
+    localStorage.setItem(
+      "tickets",
+      JSON.stringify(updatedTickets)
+    );
+
+    alert("Notes Saved Successfully");
+  };
 
   return (
     <div className="details-container">
@@ -30,28 +46,51 @@ function TicketDetails() {
 
       <div className="details-card">
 
-        <p><strong>Repair ID:</strong> {ticket.id}</p>
+        <p><strong>Repair ID:</strong> {foundTicket.id}</p>
 
-        <p><strong>Customer Name:</strong> {ticket.customer}</p>
+        <p><strong>Customer Name:</strong> {foundTicket.customer}</p>
 
-        <p><strong>Mobile:</strong> {ticket.mobile}</p>
+        <p><strong>Mobile:</strong> {foundTicket.mobile}</p>
 
-        <p><strong>Address:</strong> {ticket.address}</p>
+        <p><strong>Address:</strong> {foundTicket.address}</p>
 
-        <p><strong>Device:</strong> {ticket.device}</p>
+        <p><strong>Device:</strong> {foundTicket.device}</p>
 
-        <p><strong>Issue:</strong> {ticket.issue}</p>
+        <p><strong>Issue:</strong> {foundTicket.issue}</p>
 
-        <p><strong>Extras:</strong> {ticket.extras}</p>
+        <p><strong>Extras:</strong> {foundTicket.extras}</p>
 
-        <p><strong>Cost:</strong> ₹{ticket.cost}</p>
+        <p><strong>Cost:</strong> ₹{foundTicket.cost}</p>
 
-        <p><strong>Status:</strong> {ticket.status}</p>
+        <p><strong>Status:</strong> {foundTicket.status}</p>
 
-        <p><strong>Expected Delivery:</strong> {ticket.delivery}</p>
+        <p><strong>Expected Delivery:</strong> {foundTicket.delivery}</p>
 
+      
+
+      <h3>Technician Notes</h3>
+
+      <textarea
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+        rows="5"
+        style={{
+          width: "100%",
+          padding: "10px",
+          borderRadius: "10px",
+          marginTop: "10px"
+        }}
+      />
+
+      <button
+        onClick={saveNotes}
+        style={{
+          marginTop: "15px"
+        }}
+      >
+        Save Notes
+      </button>
       </div>
-
     </div>
   );
 }

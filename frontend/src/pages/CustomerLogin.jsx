@@ -14,12 +14,6 @@ function CustomerLogin() {
     localStorage.setItem("customerMobile", mobile);
     localStorage.setItem("customerAddress", address);
 
-    console.log({
-      name,
-      mobile,
-      address,
-    });
-
     navigate("/service-selection");
   };
 
@@ -45,41 +39,10 @@ function CustomerLogin() {
         />
 
         <textarea
-          value={notes}
-          onChange={(e) =>
-            setNotes(e.target.value)
-          }
-          rows="6"
-          style={{
-            width:"100%",
-            padding:"10px"
-          }}
+          placeholder="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
-
-
-        <button
-          onClick={() => {
-
-            const updatedTickets =
-              tickets.map((t) =>
-                t.id === id
-                  ? {
-                      ...t,
-                      notes
-                    }
-                  : t
-              );
-
-            localStorage.setItem(
-              "tickets",
-              JSON.stringify(updatedTickets)
-            );
-
-            alert("Notes Saved");
-          }}
-        >
-          Save Notes
-        </button>
 
         <button onClick={handleSubmit}>
           Continue

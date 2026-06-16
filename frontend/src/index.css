@@ -649,9 +649,72 @@ select {
   padding:30px;
   border-radius:20px;
   box-shadow:0 8px 25px rgba(0,0,0,0.2);
+  text-align:center;
 }
 
 .details-card p{
   font-size:18px;
   margin:15px 0;
+}
+
+.progress-card{
+  width:500px;
+  min-height:500px;
+  background:#1f2a44;
+  padding:30px;
+  border-radius:25px;
+  color:white;
+}
+
+.timeline{
+  margin-top:30px;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+  position:relative;
+}
+
+.step::after{
+  content:"";
+  position:absolute;
+  left:15px;
+  top:40px;
+  width:3px;
+  height:35px;
+  background:#4b5563;
+}
+
+.step:last-child::after{
+  display:none;
+}
+
+.circle{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.completed .circle{
+  background:#22c55e;
+}
+
+.active .circle{
+  background:#f59e0b;
+}
+
+.pending .circle{
+  background:#4b5563;
+}
+
+.label{
+  font-size:18px;
+  font-weight:600;
 }

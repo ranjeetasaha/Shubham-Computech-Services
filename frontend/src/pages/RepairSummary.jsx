@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 function RepairSummary() {
@@ -61,6 +61,12 @@ function RepairSummary() {
     localStorage.getItem("selectedDevice")
   );
 
+  const [notes, setNotes] = useState("");
+
+  const saveNotes = () => {
+    alert("Notes Saved");
+  };
+
   useEffect(() => {
     const existingTickets =
       JSON.parse(localStorage.getItem("tickets")) || [];
@@ -106,14 +112,25 @@ function RepairSummary() {
         <h3>Repair Notes</h3>
 
         <textarea
-          value={ticket.notes}
-          readOnly
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
           rows="6"
+          placeholder="Enter repair notes here..."
           style={{
-            width:"100%",
-            padding:"10px"
+            width: "100%",
+            padding: "12px",
+            borderRadius: "10px",
+            marginTop: "10px",
+            resize: "none"
           }}
         />
+
+        <button
+          onClick={saveNotes}
+          style={{ marginTop: "15px" }}
+        >
+          Save Notes
+        </button>
 
       </div>
     </div>
