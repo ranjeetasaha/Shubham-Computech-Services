@@ -72,7 +72,16 @@ function AdminDashboard() {
 
   return (
     <div className="admin-container">
-      <h1>Admin Dashboard</h1>
+      <div className="admin-header">
+
+        <img src="/logo.png" className="admin-logo" />
+        <h1>Admin Dashboard</h1>
+        <button className="logout-btn">
+        Logout
+        </button>
+
+      </div>
+      
 
       <div className="stats">
         <div className="card">

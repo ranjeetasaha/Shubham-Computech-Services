@@ -1,3 +1,6 @@
+import jsPDF from "jspdf";
+
+
 function TrackingStatus() {
 
   const searchRepairId =
@@ -10,6 +13,51 @@ function TrackingStatus() {
     tickets.find(
       (t) => t.id === searchRepairId
     );
+
+  const steps = [
+    "Device Received",
+    "Inspection Complete",
+    "Repair In Progress",
+    "Testing Pending",
+    "Ready For Pickup",
+    "Delivered"
+  ];
+
+  const currentIndex = steps.indexOf(ticket.status);
+  
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("SCS DANTEWADA", 20, 20);
+
+    doc.setFontSize(12);
+
+    doc.text(`Repair ID: ${ticket.id}`,20,40);
+    doc.text(`Customer: ${ticket.customer}`,20,50);
+    doc.text(`Mobile: ${ticket.mobile}`,20,60);
+
+    doc.text(`Device: ${ticket.device}`,20,80);
+    doc.text(`Issue: ${ticket.issue}`,20,90);
+
+    doc.text(`Status: ${ticket.status}`,20,110);
+
+    doc.text(`Cost: ₹${ticket.cost}`,20,120);
+
+    doc.text(
+      `Delivery: ${ticket.delivery}`,
+      20,
+      130
+    );
+
+    doc.text(
+      `Notes: ${ticket.notes || "No notes"}`,
+      20,
+      150
+    );
+
+    doc.save(`${ticket.id}.pdf`);
+  };
 
   if (!ticket) {
     return (
@@ -49,49 +97,53 @@ function TrackingStatus() {
 
         <div className="timeline">
 
-          <div className="step completed">
-            <div className="circle">✓</div>
-            <div className="label">Device Received</div>
-          </div>
+          {steps.map((step, index) => (
 
-          <div className="step completed">
-            <div className="circle">✓</div>
-            <div className="label">Inspection Complete</div>
-          </div>
+            <div
+              key={step}
+              className={
+                index < currentIndex
+                  ? "step completed"
+                  : index === currentIndex
+                  ? "step active"
+                  : "step pending"
+              }
+            >
 
-          <div className="step active">
-            <div className="circle">⚙</div>
-            <div className="label">Repair In Progress</div>
-          </div>
+              <div className="circle">
+                {
+                  index < currentIndex
+                  ? "✓"
+                  : index === currentIndex
+                  ? "⚙"
+                  : "○"
+                }
+              </div>
 
-          <div className="step pending">
-            <div className="circle">○</div>
-            <div className="label">Testing Pending</div>
-          </div>
+              <div className="label">
+                {step}
+              </div>
 
-          <div className="step pending">
-            <div className="circle">○</div>
-            <div className="label">Ready For Pickup</div>
-          </div>
+            </div>
 
-          <h3 style={{ marginTop: "30px" }}>
+          ))}
+
+        </div>
+          <h3 style={{ marginTop: "40px" }}>
             Technician Notes
           </h3>
 
-          <div
-            style={{
-              background: "#2d3748",
-              padding: "15px",
-              borderRadius: "10px",
-              marginTop: "10px",
-              color: "white",
-              minHeight: "80px",
-            }}
-          >
+          <div className="notes-box">
             {ticket.notes || "No notes available yet."}
           </div>
+          <button
+            className="download-btn"
+            onClick={downloadPDF}
+          >
+            Download Receipt PDF
+          </button>
         </div>
-      </div>
+
     </div>
   );
 }
