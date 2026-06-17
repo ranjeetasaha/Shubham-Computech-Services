@@ -93,6 +93,37 @@ function AdminDashboard() {
       0
     );
 
+  const sendWhatsApp = (repair) => {
+
+    const message =
+
+  `Hello ${repair.customer},
+
+  Your device repair is completed.
+
+  Repair ID: ${repair.id}
+
+  Device: ${repair.device}
+
+  Status: ${repair.status}
+
+  Please collect your device from
+  Shubham Computech.
+
+  Thank You.`;
+
+    const url =
+
+  `https://wa.me/91${repair.mobile}?text=${encodeURIComponent(message)}`;
+
+    window.open(
+      url,
+      "_blank"
+    );
+
+  };
+
+
   const downloadPDF = (repair) => {
 
     const doc = new jsPDF();
@@ -455,6 +486,7 @@ function AdminDashboard() {
               <th>Issue</th>
               <th>Action</th>
               <th>Invoice</th>
+              <th>WhatsApp</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -560,6 +592,22 @@ function AdminDashboard() {
                   >
                   Invoice
                   </button>
+                </td>
+                
+                <td>
+                  {repair.status === "Ready For Pickup" && (
+
+                  <button
+                    classname="whatsapp-btn"
+                    onClick={(e)=>{
+                    e.stopPropagation();
+                    sendWhatsApp(repair);
+                    }}
+                    >
+                    WhatsApp
+                  </button>
+
+                  )}
                 </td>
 
                 <td>
