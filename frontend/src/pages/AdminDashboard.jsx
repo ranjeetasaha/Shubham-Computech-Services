@@ -598,15 +598,14 @@ function AdminDashboard() {
                   {repair.status === "Ready For Pickup" && (
 
                   <button
-                    classname="whatsapp-btn"
+                    className="whatsapp-btn"
                     onClick={(e)=>{
-                    e.stopPropagation();
-                    sendWhatsApp(repair);
+                      e.stopPropagation();
+                      sendWhatsApp(repair);
                     }}
-                    >
-                    WhatsApp
+                  >
+                    📲Notify
                   </button>
-
                   )}
                 </td>
 

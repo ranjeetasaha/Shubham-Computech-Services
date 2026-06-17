@@ -58,6 +58,33 @@ function TicketDetails() {
 
         <p><strong>Issue:</strong> {foundTicket.issue}</p>
 
+        <h3
+          style={{
+          marginTop:"25px",
+          color:"#7c3aed"
+          }}
+        >
+          Customer Repair Notes
+        </h3>
+
+        <div
+          style={{
+            background:"#ffffff",
+            padding:"20px",
+            borderRadius:"15px",
+            marginBottom:"25px",
+            color:"#333",
+            fontSize:"17px",
+            lineHeight:"1.7"
+          }}
+        >
+        {
+          foundTicket.repairNotes ||
+
+          "No repair notes available."
+        }
+        </div>
+
         <p><strong>Extras:</strong> {foundTicket.extras}</p>
 
         <p><strong>Cost:</strong> ₹{foundTicket.cost}</p>

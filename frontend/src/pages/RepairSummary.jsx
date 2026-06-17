@@ -42,12 +42,13 @@ function RepairSummary() {
     mobile: localStorage.getItem("customerMobile"),
     address: localStorage.getItem("customerAddress"),
     device: localStorage.getItem("selectedDevice"),
-    mobile: localStorage.getItem("customerMobile"),
     issue: localStorage.getItem("selectedIssue"),
     extras: localStorage.getItem("extraItems"),
     status: "Device Received",
     cost: estimatedPrice,
     delivery: recoveryDate,
+    repairNotes:
+    localStorage.getItem("repairNotes") || "",
     notes: ""
   };
 
@@ -64,7 +65,32 @@ function RepairSummary() {
   const [notes, setNotes] = useState("");
 
   const saveNotes = () => {
-    alert("Notes Saved");
+
+    const updatedTickets =
+      JSON.parse(localStorage.getItem("tickets")) || [];
+
+    const newTickets = updatedTickets.map((t)=>
+
+      t.id === repairId
+
+      ? {
+
+          ...t,
+
+          repairNotes: notes
+
+        }
+
+      : t
+
+    );
+
+    localStorage.setItem(
+      "tickets",
+      JSON.stringify(newTickets)
+    );
+
+    alert("Notes Saved Successfully");
   };
 
   useEffect(() => {
