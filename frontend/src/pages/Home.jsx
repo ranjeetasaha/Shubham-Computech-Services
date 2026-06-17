@@ -113,7 +113,7 @@ function Home() {
           </div>
 
           <div className="feature-box">
-            <h3>🛡 Quality Guarantee</h3>
+            <h3>👨🏻‍💻 Quality Guarantee</h3>
             <p>
               Reliable repair service with quality assurance
               and customer satisfaction.

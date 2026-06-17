@@ -96,25 +96,27 @@ function AdminDashboard() {
   const sendWhatsApp = (repair) => {
 
     const message =
+      `Hello ${repair.customer},
 
-  `Hello ${repair.customer},
+      Your device repair is completed.
 
-  Your device repair is completed.
+      Repair ID: ${repair.id}
 
-  Repair ID: ${repair.id}
+      Device: ${repair.device}
 
-  Device: ${repair.device}
+      Issue: ${repair.issue}
 
-  Status: ${repair.status}
+      Repair Cost: Rs.${repair.cost}
 
-  Please collect your device from
-  Shubham Computech.
+      Delivery Date: ${repair.delivery}
 
-  Thank You.`;
+      Status: ${repair.status}
 
+      Please collect your device from Shubham Computech Services.
+
+      Thank You 😊`;
     const url =
-
-  `https://wa.me/91${repair.mobile}?text=${encodeURIComponent(message)}`;
+      `https://wa.me/91${repair.mobile}?text=${encodeURIComponent(message)}`;
 
     window.open(
       url,
@@ -511,7 +513,7 @@ function AdminDashboard() {
                 <td>{repair.status}</td>
                 <td>
                   <input
-                    type="number"
+                    type="text"
                     value={repair.cost}
                     className="edit-input"
                     onClick={(e)=>

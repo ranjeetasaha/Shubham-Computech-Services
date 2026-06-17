@@ -74,7 +74,7 @@ function TrackingStatus() {
 
       {/* Details Card */}
       <div
-        className="login-card"
+        className="status-card"
         style={{
           color: "white",
           textAlign: "center",
@@ -82,18 +82,38 @@ function TrackingStatus() {
       >
         <h1>Repair Status</h1>
 
-        <p><b>Repair ID:</b> {ticket.id}</p>
-        <p><b>Customer:</b> {ticket.customer}</p>
-        <p><b>Device:</b> {ticket.device}</p>
-        <p><b>Issue:</b> {ticket.issue}</p>
-        <p><b>Status:</b> {ticket.status}</p>
-        <p><b>Estimated Cost:</b> ₹{ticket.cost}</p>
-        <p><b>Delivery Date:</b> {ticket.delivery}</p>
+        <p className="ticket-detail">
+          Repair ID :  <span>{ticket.id}</span>
+        </p>
+
+        <p className="ticket-detail">
+          Customer :  <span>{ticket.customer}</span>
+        </p>
+
+        <p className="ticket-detail">
+          Device :  <span>{ticket.device}</span>
+        </p>
+
+        <p className="ticket-detail">
+          Issue :  <span>{ticket.issue}</span>
+        </p>
+
+        <p className="ticket-detail">
+          Status :  <span>{ticket.status}</span>
+        </p>
+
+        <p className="ticket-detail">
+          Estimated Cost :  <span>{ticket.cost}</span>
+        </p>
+
+        <p className="ticket-detail">
+          Delivery Date :  <span>{ticket.delivery}</span>
+        </p>
       </div>
 
       {/* Progress Card */}
       <div className="progress-card">
-        <h2>Repair Progress</h2>
+        <h2 className="progress-title">Repair Progress</h2>
 
         <div className="timeline">
 

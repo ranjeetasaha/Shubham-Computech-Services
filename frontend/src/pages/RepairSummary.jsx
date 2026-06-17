@@ -9,21 +9,14 @@ function RepairSummary() {
   const latestTicket =
     JSON.parse(localStorage.getItem("latestTicket"));
 
-  let estimatedPrice =
-    localStorage.getItem("estimatedPrice");
+  const estimatedPrice =
+  "To be shown after the completion of device inspection.";
 
-  if (!estimatedPrice) {
-    estimatedPrice =
-      Math.floor(500 + Math.random() * 5000);
-
-    localStorage.setItem(
-      "estimatedPrice",
-      estimatedPrice
+  let recoveryDate = new Date(
+    Date.now() + 7 * 24 * 60 * 60 * 1000
+    ).toLocaleDateString(
+    "en-GB"
     );
-  }
-
-  let recoveryDate =
-    localStorage.getItem("recoveryDate");
 
   if (!recoveryDate) {
     recoveryDate = new Date(
@@ -47,8 +40,7 @@ function RepairSummary() {
     status: "Device Received",
     cost: estimatedPrice,
     delivery: recoveryDate,
-    repairNotes:
-    localStorage.getItem("repairNotes") || "",
+    repairNotes:localStorage.getItem("repairNotes") || "",
     notes: ""
   };
 
@@ -124,18 +116,22 @@ function RepairSummary() {
         
         <h1>Repair Ticket Generated</h1>
         
-        <h2 style={{ color: "white" }}>Repair ID</h2>
-        <p style={{ color: "yellow" }}>{latestTicket?.id}</p>
+        <h2 style={{ color: "black" }}>Repair ID</h2>
+        <div className="id-box">
+          {latestTicket?.id}
+        </div>
 
-        <h2 style={{ color: "white" }}>Estimated Cost</h2>
-        <p style={{ color: "yellow" }}>₹ {latestTicket?.cost}</p>
+        <h2 style={{ color: "black" }}>Estimated Cost</h2>
+        <p className="cost-message">{latestTicket?.cost}</p>
 
-        <h2 style={{ color: "white" }}>Expected Delivery</h2>
-        <p style={{ color: "yellow" }}>{latestTicket?.delivery}</p>
+        <h2 style={{ color: "black" }}>Expected Delivery</h2>
+        <p className="delivery-date">{latestTicket?.delivery}</p>
         
         <hr />
 
-        <h3>Repair Notes</h3>
+        <h3 className="notes-title">
+          Repair Notes
+        </h3>
 
         <textarea
           value={notes}
