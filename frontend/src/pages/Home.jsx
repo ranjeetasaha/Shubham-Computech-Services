@@ -129,31 +129,29 @@ function Home() {
         <h2>Our Services</h2>
 
         <div className="service-grid">
+            <div className="service-item">Laptop Repair</div>
 
-          <div className="service-item">
-            Laptop Repair
-          </div>
+            <div className="service-item">Desktop Repair</div>
 
-          <div className="service-item">
-            Printer Repair
-          </div>
+            <div className="service-item">Printer Repair</div>
 
-          <div className="service-item">
-            UPS Repair
-          </div>
+            <div className="service-item">UPS Repair</div>
 
-          <div className="service-item">
-            CCTV Installation
-          </div>
+            <div className="service-item">Networking Services</div>
 
-          <div className="service-item">
-            Online Form Filling
-          </div>
+            <div className="service-item">Fiber Optic Services</div>
 
-          <div className="service-item">
-            Government Registration
-          </div>
+            <div className="service-item">Data Recovery</div>
 
+            <div className="service-item">Inverter Services</div>
+
+            <div className="service-item">CCTV Installation</div>
+
+            <div className="service-item">Online Form Filling</div>
+
+            <div className="service-item">Government Registration</div>
+
+            <div className="service-item">Bus/Train Booking Services</div>
         </div>
 
       </div>
