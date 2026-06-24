@@ -162,15 +162,13 @@ function Home() {
             Login to your account to book a repair or track your existing service request.<br />
             Or contact us directly for any inquiries or support.
         </p>
-        <p style={{fontWeight: "bolder"}}>
+        <p style={{color:"lightsalmon",fontWeight: "bolder"}}>
             🕒 Business Hours<br />
             Mon - Sat: 10:00 AM - 8:00 PM<br />
             Sunday: Closed<br />
-
-            📍 Dantewada, Chhattisgarh<br />
-            📞Contact only- +91 78567 96747 <br />
-              For whatsapp contact - +91 82510 08289
-              <br />
+          📞Contact only- +91 78567 96747 <br />
+              For whatsapp contact - +91 82510 08289<br />
+              📍 Dantewada, Chhattisgarh<br />
             ✉️ shubhamcomputech@gmail.com<br />
         </p>
       </footer>
