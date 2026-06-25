@@ -1414,3 +1414,95 @@ linear-gradient(
 -webkit-text-fill-color:transparent;
 
 }
+
+.tracking-status-card{
+
+    width:650px;
+
+    padding:45px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.16);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.22);
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.tracking-status-card h1{
+
+    font-size:48px;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+    background:linear-gradient(
+    90deg,
+    #3b82f6,
+    #7c3aed,
+    #ec4899);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.warning-icon{
+
+    font-size:70px;
+
+    margin-bottom:10px;
+    color:#fc0303;
+
+}
+
+.warning-title{
+
+    color:#fcfc03;
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.warning-text{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    margin-bottom:10px;
+
+    color:rgb(106, 2, 225);
+
+}
+
+.tracking-details{
+
+    margin-top:35px;
+
+    padding-top:25px;
+
+    border-top:3px solid white;
+
+}
+
+.tracking-details p{
+    color:#9a16a3;
+    font-size:20px;
+
+    margin:12px 0;
+
+}

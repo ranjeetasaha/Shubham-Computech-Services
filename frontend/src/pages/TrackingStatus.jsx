@@ -14,6 +14,61 @@ function TrackingStatus() {
       (t) => t.id === searchRepairId
     );
 
+  if (!ticket) {
+    return (
+      <div className="login-page">
+        <div className="login-card">
+          <h2>Ticket Not Found</h2>
+        </div>
+      </div>
+    );
+  }
+
+  if (ticket.status === "Device Not Received") {
+    return (
+      <div className="login-page">
+
+        <div className="tracking-status-card">
+
+          <h1>Repair Status</h1>
+
+          <div className="warning-icon">⚠</div>
+
+          <h2 className="warning-title">
+            Device Not Received
+          </h2>
+
+          <p className="warning-text">
+            We have not yet received your device.
+          </p>
+
+          <p className="warning-text">
+            Please visit
+            <strong> Shubham Computech Services </strong>
+            and submit your device to start the repair process.
+          </p>
+
+          <div className="tracking-details">
+
+            <p><strong>Repair ID:</strong> {ticket.id}</p>
+
+            <p><strong>Customer:</strong> {ticket.customer}</p>
+
+            <p><strong>Device:</strong> {ticket.device}</p>
+
+            <p><strong>Issue:</strong> {ticket.issue}</p>
+
+          </div>
+
+        </div>
+
+      </div>
+    );
+  }
+
+
+
+
   const steps = [
     "Device Received",
     "Inspection Complete",

@@ -557,26 +557,18 @@ function AdminDashboard() {
                     onChange={(e) =>
                       updateStatus(repair.id, e.target.value)
                     }
-                  >
-                    <option>
-                      Device Received
-                    </option>
+                  > 
+                    <option>Device Not Received</option>
+                    
+                    <option>Device Received</option>
 
-                    <option>
-                      Inspection Complete
-                    </option>
+                    <option>Inspection Complete</option>
 
-                    <option>
-                      Repair In Progress
-                    </option>
+                    <option>Repair In Progress</option>
 
-                    <option>
-                      Testing Pending
-                    </option>
+                    <option>Testing Pending</option>
 
-                    <option>
-                      Ready For Pickup
-                    </option>
+                    <option> Ready For Pickup</option>
                   </select>
                 </td>
                 
