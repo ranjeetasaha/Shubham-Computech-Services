@@ -95,36 +95,157 @@ function AdminDashboard() {
 
   const sendWhatsApp = (repair) => {
 
-    const message =
-      `Hello ${repair.customer},
+    let message = "";
 
-      Your device repair is completed.
+    switch (repair.status) {
 
-      Repair ID: ${repair.id}
+      case "Device Not Received":
 
-      Device: ${repair.device}
+        message =
+  `Hello ${repair.customer},
 
-      Issue: ${repair.issue}
+  Your repair request has been created successfully.
 
-      Repair Cost: Rs.${repair.cost}
+  Repair ID : ${repair.id}
 
-      Delivery Date: ${repair.delivery}
+  Device : ${repair.device}
 
-      Status: ${repair.status}
+  Issue : ${repair.issue}
 
-      Please collect your device from Shubham Computech Services.
+  Current Status : Device Not Received
 
-      Thank You 😊`;
+  Please submit your device at Shubham Computech Services so we can begin the repair process.
+
+  Thank You 😊`;
+
+        break;
+
+      case "Device Received":
+
+        message =
+  `Hello ${repair.customer},
+
+  Your device has been received successfully.
+
+  Repair ID : ${repair.id}
+
+  Device : ${repair.device}
+
+  Current Status : Device Received
+
+  Our technician will inspect your device shortly.
+
+  Thank You 😊`;
+
+        break;
+
+      case "Inspection Complete":
+
+        message =
+  `Hello ${repair.customer},
+
+  Inspection of your device has been completed.
+
+  Repair ID : ${repair.id}
+
+  Estimated Cost : Rs.${repair.cost}
+
+  Expected Delivery : ${repair.delivery}
+
+  Current Status : Inspection Complete
+
+  Thank You 😊`;
+
+        break;
+
+      case "Repair In Progress":
+
+        message =
+  `Hello ${repair.customer},
+
+  Your device is currently under repair.
+
+  Repair ID : ${repair.id}
+
+  Device : ${repair.device}
+
+  Estimated Cost : Rs.${repair.cost}
+
+  Expected Delivery : ${repair.delivery}
+
+  Current Status : Repair In Progress
+
+  Thank You 😊`;
+
+        break;
+
+      case "Testing Pending":
+
+        message =
+  `Hello ${repair.customer},
+
+  Repair work has been completed.
+
+  Your device is currently under final testing.
+
+  Repair ID : ${repair.id}
+
+  Current Status : Testing Pending
+
+  Thank You 😊`;
+
+        break;
+
+      case "Ready For Pickup":
+
+        message =
+  `Hello ${repair.customer},
+
+  🎉 Great News!
+
+  Your device repair has been completed successfully.
+
+  Repair ID : ${repair.id}
+
+  Device : ${repair.device}
+
+  Repair Cost : Rs.${repair.cost}
+
+  Please collect your device from Shubham Computech Services.
+
+  Thank You 😊`;
+
+        break;
+
+      default:
+
+        message =
+  `Hello ${repair.customer},
+
+  Repair ID : ${repair.id}
+
+  Current Status : ${repair.status}
+
+  Thank You 😊`;
+
+    }
+
     const url =
       `https://wa.me/91${repair.mobile}?text=${encodeURIComponent(message)}`;
 
-    window.open(
-      url,
-      "_blank"
-    );
+    window.open(url, "_blank");
 
   };
 
+  const sendSMS = (repair) => {
+
+    const message = /* same message you use in sendWhatsApp */
+
+    window.open(
+      `sms:${repair.mobile}?body=${encodeURIComponent(message)}`
+    );
+
+  };
 
   const downloadPDF = (repair) => {
 
@@ -489,6 +610,7 @@ function AdminDashboard() {
               <th>Action</th>
               <th>Invoice</th>
               <th>WhatsApp</th>
+              <th>SMS</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -589,8 +711,6 @@ function AdminDashboard() {
                 </td>
                 
                 <td>
-                  {repair.status === "Ready For Pickup" && (
-
                   <button
                     className="whatsapp-btn"
                     onClick={(e)=>{
@@ -598,9 +718,20 @@ function AdminDashboard() {
                       sendWhatsApp(repair);
                     }}
                   >
-                    📲Notify
+                    📲 Notify
                   </button>
-                  )}
+                </td>
+
+                <td>
+                  <button
+                    className="sms-btn"
+                    onClick={(e)=>{
+                      e.stopPropagation();
+                      sendSMS(repair);
+                    }}
+                  >
+                    📩 SMS
+                  </button>
                 </td>
 
                 <td>
