@@ -93,7 +93,67 @@ function TicketDetails() {
 
         <p><strong>Expected Delivery:</strong> {foundTicket.delivery}</p>
 
-      
+        <h3
+          style={{
+            marginTop: "30px",
+            color: "#7c3aed"
+          }}
+        >
+          Uploaded Media
+        </h3>
+
+        <div className="media-gallery">
+
+          {foundTicket.media &&
+          foundTicket.media.length > 0 ? (
+
+            foundTicket.media.map((item, index) => (
+
+              <div
+                className="admin-media-card"
+                key={index}
+              >
+
+                {
+                  item.file.type.startsWith("image")
+
+                  ?
+
+                  <img
+                    src={item.preview}
+                    alt=""
+                    className="admin-media"
+                  />
+
+                  :
+
+                  <video
+                    controls
+                    className="admin-media"
+                  >
+                    <source src={item.preview} />
+                  </video>
+
+                }
+
+              </div>
+
+            ))
+
+          ) : (
+
+            <p
+              style={{
+                color: "#666",
+                marginTop: "10px"
+              }}
+            >
+              No media uploaded.
+            </p>
+
+          )}
+
+        </div>
 
       <h3>Technician Notes</h3>
 

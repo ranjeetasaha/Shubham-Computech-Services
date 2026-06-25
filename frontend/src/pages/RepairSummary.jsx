@@ -41,6 +41,11 @@ function RepairSummary() {
     cost: estimatedPrice,
     delivery: recoveryDate,
     repairNotes:localStorage.getItem("repairNotes") || "",
+    media:
+
+    JSON.parse(
+    localStorage.getItem("uploadedMedia")
+    ) || [],
     notes: ""
   };
 

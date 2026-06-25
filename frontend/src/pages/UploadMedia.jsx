@@ -31,6 +31,17 @@ function UploadMedia() {
 
     };
 
+    const handleContinue = () => {
+
+    localStorage.setItem(
+        "uploadedMedia",
+        JSON.stringify(files)
+    );
+
+    navigate("/extra-items");
+
+    };
+
   return (
 
     <div className="login-page">
@@ -179,10 +190,10 @@ function UploadMedia() {
         </div>
 
         <button
-          onClick={() => navigate("/extra-items")}
-          style={{marginTop:"30px"}}
+            onClick={handleContinue}
+            style={{marginTop:"30px"}}
         >
-          Continue
+        Continue
         </button>
 
       </div>
