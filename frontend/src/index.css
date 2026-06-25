@@ -1718,3 +1718,20 @@ white-space:nowrap;
 text-overflow:ellipsis;
 
 }
+
+@media(max-width:768px){
+
+.preview-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.preview-image,
+.preview-video{
+
+height:220px;
+
+}
+
+}
