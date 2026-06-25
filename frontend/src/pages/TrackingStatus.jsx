@@ -204,6 +204,72 @@ function TrackingStatus() {
           ))}
 
         </div>
+          <h3
+            style={{
+              marginTop: "35px",
+              color: "white"
+            }}
+          >
+            Uploaded Photos / Videos
+          </h3>
+
+          <div className="tracking-media-gallery">
+
+            {
+              ticket.media &&
+              ticket.media.length > 0
+
+              ?
+
+              ticket.media.map((item,index)=>(
+
+                <div
+                  className="tracking-media-card"
+                  key={index}
+                >
+
+                  {
+
+                  item.type.startsWith("image")
+
+                  ?
+
+                  <img
+                    src={item.preview}
+                    className="tracking-media"
+                    alt=""
+                  />
+
+                  :
+
+                  <video
+                    controls
+                    className="tracking-media"
+                  >
+                    <source
+                      src={item.preview}
+                    />
+                  </video>
+
+                  }
+
+                </div>
+
+              ))
+
+              :
+
+              <p
+                style={{
+                  color:"white"
+                }}
+              >
+                No media uploaded.
+              </p>
+
+            }
+
+          </div>
           <h3 style={{ marginTop: "40px" }}>
             Technician Notes
           </h3>

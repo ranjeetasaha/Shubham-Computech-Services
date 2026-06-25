@@ -115,7 +115,7 @@ function TicketDetails() {
               >
 
                 {
-                  item.file.type.startsWith("image")
+                  item.type.startsWith("image")
 
                   ?
 

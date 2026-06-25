@@ -7,25 +7,49 @@ function UploadMedia() {
 
   const [files, setFiles] = useState([]);
 
-  const handleFileChange = (e) => {
+  const convertToBase64 = (file) => {
 
-    const selectedFiles = Array.from(e.target.files);
+    return new Promise((resolve) => {
+
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = () => {
+
+        resolve(reader.result);
+
+        };
+
+    });
+
+  };
+
+  const handleFileChange = async (e) => {
+
+    const selectedFiles =
+        Array.from(e.target.files);
 
     const updatedFiles = [...files];
 
-    selectedFiles.forEach((file) => {
+    for (const file of selectedFiles) {
 
-        if (updatedFiles.length >= 5) return;
+        if (updatedFiles.length >= 5) break;
+
+        const base64 =
+        await convertToBase64(file);
 
         updatedFiles.push({
 
-        file,
+        name: file.name,
 
-        preview: URL.createObjectURL(file)
+        type: file.type,
+
+        preview: base64
 
         });
 
-    });
+    }
 
     setFiles(updatedFiles);
 
@@ -40,7 +64,7 @@ function UploadMedia() {
 
     navigate("/extra-items");
 
-    };
+  };
 
   return (
 
@@ -141,44 +165,42 @@ function UploadMedia() {
                 {files.map((item,index)=>(
 
                 <div
-                    className="media-card"
-                    key={index}
+                className="media-card"
+                key={index}
                 >
                     <button
+                        type="button"
                         className="remove-btn"
-                        onClick={()=>{
-                            setFiles(files.filter((_,i)=>i!==index));
-                        }}
+                        onClick={() =>
+                        setFiles(files.filter((_, i) => i !== index))
+                        }
                     >
-                    ✖
+                        ✖
                     </button>
 
+                    {
+                        item.type.startsWith("image") ? (
 
-                    {item.file.type.startsWith("image")
+                        <img
+                            src={item.preview}
+                            alt=""
+                            className="preview-image"
+                        />
 
-                    ?
+                        ) : (
 
-                    <img
-                    src={item.preview}
-                    alt=""
-                    className="preview-image"
-                    />
+                        <video
+                            controls
+                            className="preview-video"
+                        >
+                            <source src={item.preview} />
+                        </video>
 
-                    :
-
-                    <video
-                    controls
-                    className="preview-video"
-                    >
-                    <source
-                        src={item.preview}
-                    />
-                    </video>
-
+                        )
                     }
 
                     <p className="media-name">
-                        {item.file.name}
+                        {item.name}
                     </p>
 
                 </div>
