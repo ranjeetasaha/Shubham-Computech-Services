@@ -166,7 +166,9 @@ function UploadMedia() {
 
                     }
 
-                    
+                    <p className="media-name">
+                        {item.file.name}
+                    </p>
 
                 </div>
 
