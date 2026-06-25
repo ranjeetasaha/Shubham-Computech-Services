@@ -12,6 +12,7 @@ import TrackRepair from "./pages/TrackRepair";
 import TrackingStatus from "./pages/TrackingStatus";
 import AdminDashboard from "./pages/AdminDashboard";
 import TicketDetails from "./pages/TicketDetails";
+import UploadMedia from "./pages/UploadMedia";
 
 function App() {
   return (
@@ -46,6 +47,11 @@ function App() {
         <Route
           path="/issue-selection"
           element={<IssueSelection />}
+        />
+
+        <Route
+          path="/upload-media"
+          element={<UploadMedia />}
         />
 
         <Route

@@ -12,31 +12,31 @@ function IssueSelection() {
         <div className="options-container">
             <h1>Select Issue</h1>
 
-            <Link to="/extra-items">
+            <Link to="/upload-media">
               <button onClick={() => saveIssue("Screen Damage")}>
                 Screen Damage
               </button>
             </Link>
 
-            <Link to="/extra-items">
-            <button onClick={() => saveIssue("Battery Issue")}>
-              Battery Issue
-            </button>
+            <Link to="/upload-media">
+              <button onClick={() => saveIssue("Battery Issue")}>
+                Battery Issue
+              </button>
             </Link>
 
-            <Link to="/extra-items">
+            <Link to="/upload-media">
             <button onClick={() => saveIssue("Keyboard Issue")}>
               Keyboard Issue
             </button>
             </Link>
 
-            <Link to="/extra-items">
+            <Link to="/upload-media">
             <button onClick={() => saveIssue("No Power")}>
               No Power
             </button>
             </Link>
 
-            <Link to="/extra-items">
+            <Link to="/upload-media">
               <button onClick={() => saveIssue("Data Recovery")}>
                 Data Recovery
               </button>
