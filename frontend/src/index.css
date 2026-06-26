@@ -1896,3 +1896,47 @@ color:white;
 font-size:15px;
 
 }
+
+.customer-summary{
+
+margin:25px 0;
+
+padding:25px;
+
+border-radius:18px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#2563eb,
+
+#7c3aed,
+
+#ec4899
+
+);
+
+color:white;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.2);
+
+}
+
+.customer-summary h2{
+
+margin-bottom:15px;
+
+}
+
+.customer-summary p{
+
+margin:8px 0;
+
+font-size:17px;
+
+}

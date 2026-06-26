@@ -95,6 +95,68 @@ function TicketDetails() {
 
         <p><strong>Expected Delivery:</strong> {foundTicket.delivery}</p>
 
+        <hr style={{ margin: "25px 0" }} />
+
+        <h3 style={{ color: "#7c3aed" }}>
+          Previous Repair History
+        </h3>
+
+        {
+          (() => {
+
+            const history = tickets.filter((t) =>
+
+              t.id !== foundTicket.id &&
+
+              (
+
+                t.mobile === foundTicket.mobile ||
+
+                (
+
+                  foundTicket.serialNumber &&
+
+                  t.serialNumber === foundTicket.serialNumber
+
+                )
+
+              )
+
+            );
+
+            return history.length > 0 ? (
+
+              history.map((item) => (
+
+                <div
+                  className="history-item"
+                  key={item.id}
+                >
+
+                  <p><strong>Repair ID:</strong> {item.id}</p>
+
+                  <p><strong>Device:</strong> {item.device}</p>
+
+                  <p><strong>Issue:</strong> {item.issue}</p>
+
+                  <p><strong>Status:</strong> {item.status}</p>
+
+                  <p><strong>Delivery:</strong> {item.delivery}</p>
+
+                </div>
+
+              ))
+
+            ) : (
+
+              <p>No previous repair history found.</p>
+
+            );
+
+          })()
+        }
+
+
         <h3
           style={{
             marginTop: "30px",

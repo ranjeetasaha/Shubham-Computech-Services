@@ -93,6 +93,107 @@ function AdminDashboard() {
       0
     );
 
+  const filteredRepairs = repairs.filter((repair) => {
+
+    const search = searchTerm.toLowerCase();
+
+    return (
+
+      repair.id
+        .toLowerCase()
+        .includes(search)
+
+      ||
+
+      repair.customer
+        .toLowerCase()
+        .includes(search)
+
+      ||
+
+      (repair.mobile || "")
+        .includes(search)
+
+      ||
+
+      (repair.serialNumber || "")
+        .toLowerCase()
+        .includes(search)
+
+      ||
+
+      repair.device
+        .toLowerCase()
+        .includes(search)
+
+      ||
+
+      repair.issue
+        .toLowerCase()
+        .includes(search)
+
+    );
+
+  });
+
+  const customerSummary =
+
+  filteredRepairs.length > 0
+
+  ?
+
+  {
+
+  customer:
+
+  filteredRepairs[0].customer,
+
+  mobile:
+
+  filteredRepairs[0].mobile,
+
+  totalRepairs:
+
+  filteredRepairs.length,
+
+  totalRevenue:
+
+  filteredRepairs.reduce(
+
+  (sum,item)=>
+
+  sum+
+
+  (Number(item.cost)||0),
+
+  0
+
+  ),
+
+  devices:
+
+  [
+
+  ...new Set(
+
+  filteredRepairs.map(
+
+  item=>item.device
+
+  )
+
+  )
+
+  ].join(", ")
+
+  }
+
+  :
+
+  null;
+
+
+
   const sendWhatsApp = (repair) => {
 
     let message = "";
@@ -590,11 +691,52 @@ function AdminDashboard() {
 
       <input
         type="text"
-        placeholder="Search Repair ID..."
+        placeholder="Search by Repair ID, Serial No., Mobile, Customer, Device or Issue..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-box"
       />
+
+      {
+      customerSummary &&
+
+      searchTerm !== "" && (
+
+      <div className="customer-summary">
+
+      <h2>
+
+      Customer Summary
+
+      </h2>
+
+      <p>
+
+      <strong>Customer:</strong>
+
+      {customerSummary.customer}
+
+      </p>
+
+      <p> <strong>Mobile:</strong> {customerSummary.mobile} </p>
+
+      <p> <strong>Total Repairs:</strong> {customerSummary.totalRepairs} </p>
+
+      <p> <strong>Devices:</strong> {customerSummary.devices} </p>
+
+      <p>
+
+      <strong>Total Revenue:</strong>
+
+      ₹{customerSummary.totalRevenue}
+
+      </p>
+
+      </div>
+
+      )
+      }
+
       <div className="table-container">
         <table>
           <thead>
@@ -618,11 +760,50 @@ function AdminDashboard() {
 
           <tbody>
             {repairs
-              .filter((repair) =>
-                repair.id
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase())
-              )
+              .filter((repair) => {
+
+                const search =
+                  searchTerm.toLowerCase();
+
+                return (
+
+                  repair.id
+                    .toLowerCase()
+                    .includes(search)
+
+                  ||
+
+                  repair.customer
+                    .toLowerCase()
+                    .includes(search)
+
+                  ||
+
+                  (repair.mobile || "")
+                    .includes(search)
+
+                  ||
+
+                  (repair.serialNumber || "")
+                    .toLowerCase()
+                    .includes(search)
+
+                  ||
+
+                  repair.device
+                    .toLowerCase()
+                    .includes(search)
+
+                  ||
+
+                  repair.issue
+                    .toLowerCase()
+                    .includes(search)
+
+                );
+
+              })
+
               .map((repair) => (
               <tr
                 key={repair.id}
