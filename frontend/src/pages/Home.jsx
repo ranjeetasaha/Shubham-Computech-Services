@@ -5,6 +5,14 @@ function Home() {
 
   return (
     <div className="home">
+      <div className="top-admin-login">
+        <Link to="/admin-dashboard">
+          <button className="admin-btn">
+            👤 Admin Login
+          </button>
+        </Link>
+      </div>
+
       <div className="logo-container">
         <img
           src="/logo.png"
@@ -37,27 +45,21 @@ function Home() {
             </button>
           </Link>
 
-          <Link to="/admin-dashboard">
-            <button className="admin-btn">
-              Admin Login
+          <Link to="/track">
+            <button className="track-btn"
+              style={{
+                padding: "15px 30px",
+                border: "none",
+                borderRadius: "10px",
+                background: "#9333ea",
+                color: "white",
+                fontSize: "18px",
+                cursor: "pointer"
+              }}
+            >
+              Track Repair
             </button>
           </Link>
-
-        <Link to="/track">
-          <button className="track-btn"
-            style={{
-              padding: "15px 30px",
-              border: "none",
-              borderRadius: "10px",
-              background: "#9333ea",
-              color: "white",
-              fontSize: "18px",
-              cursor: "pointer"
-            }}
-          >
-            Track Repair
-          </button>
-        </Link>
         </div>
 
       </div>
