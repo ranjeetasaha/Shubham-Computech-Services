@@ -9,11 +9,22 @@ function TrackingStatus() {
   const tickets =
     JSON.parse(localStorage.getItem("tickets")) || [];
 
-  const ticket =
-    tickets.find(
-      (t) => t.id === searchRepairId
-    );
+  const search =
+    searchRepairId.trim().toLowerCase();
 
+  const ticket =
+    tickets.find((t) =>
+
+      (t.id || "")
+        .toLowerCase() === search ||
+
+      (t.serialNumber || "")
+        .toLowerCase() === search ||
+
+      (t.mobile || "") === search
+
+    );
+  
   if (!ticket) {
     return (
       <div className="login-page">
@@ -79,6 +90,27 @@ function TrackingStatus() {
   ];
 
   const currentIndex = steps.indexOf(ticket.status);
+
+  const visitHistory =
+    tickets.filter((t) =>
+
+      t.id !== ticket.id &&
+
+      (
+
+        t.mobile === ticket.mobile ||
+
+        (
+          ticket.serialNumber &&
+          t.serialNumber === ticket.serialNumber
+        )
+
+      )
+
+    );
+
+  const totalVisits =
+    visitHistory.length + 1;
   
   const downloadPDF = () => {
     const doc = new jsPDF();
@@ -164,6 +196,82 @@ function TrackingStatus() {
         <p className="ticket-detail">
           Delivery Date :  <span>{ticket.delivery}</span>
         </p>
+
+        <hr
+          style={{
+            margin: "20px 0"
+          }}
+        />
+
+        <h3
+          style={{
+            color: "#ffd700",
+            marginTop: "20px"
+          }}
+        >
+          Previous Repair History
+        </h3>
+
+        <p className="ticket-detail">
+          Total Visits :
+          <span>{totalVisits}</span>
+        </p>
+
+        <div className="history-box">
+
+          {
+
+            visitHistory.length > 0
+
+            ?
+
+            visitHistory.map((item) => (
+
+              <div
+                className="history-item"
+                key={item.id}
+              >
+
+                <p>
+                  <strong>
+                    {item.id}
+                  </strong>
+                </p>
+
+                <p>
+                  Device: {item.device}
+                </p>
+
+                <p>
+                  Issue: {item.issue}
+                </p>
+
+                <p>
+                  Status: {item.status}
+                </p>
+
+                <p>
+                  Delivery Date: {item.delivery}
+                </p>
+              </div>
+
+            ))
+
+            :
+
+            <p
+              style={{
+                color: "white",
+                textAlign: "center",
+                marginTop: "15px"
+              }}
+            >
+              No previous repair history found.
+            </p>
+
+          }
+
+        </div>
       </div>
 
       {/* Progress Card */}

@@ -25,7 +25,7 @@ function TrackRepair() {
 
         <input
           type="text"
-          placeholder="Enter Repair ID"
+          placeholder="Enter Repair ID / Serial Number / Mobile Number"
           value={repairId}
           onChange={(e) => setRepairId(e.target.value)}
         />
