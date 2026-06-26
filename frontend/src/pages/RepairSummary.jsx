@@ -41,13 +41,14 @@ function RepairSummary() {
     cost: estimatedPrice,
     delivery: recoveryDate,
     repairNotes:localStorage.getItem("repairNotes") || "",
-    media:
-
-    JSON.parse(
-    localStorage.getItem("uploadedMedia")
-    ) || [],
+    media: [],
     notes: ""
   };
+
+  localStorage.setItem(
+    `media_${repairId}`,
+    localStorage.getItem("uploadedMedia")
+  );
 
   localStorage.setItem(
     "latestTicket",

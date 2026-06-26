@@ -56,6 +56,8 @@ function TicketDetails() {
 
         <p><strong>Device:</strong> {foundTicket.device}</p>
 
+        <p><strong>Serial Number: </strong>{foundTicket.serialNumber || "Not Assigned Yet"}</p>
+
         <p><strong>Issue:</strong> {foundTicket.issue}</p>
 
         <h3

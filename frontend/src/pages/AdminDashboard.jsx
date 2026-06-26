@@ -603,6 +603,7 @@ function AdminDashboard() {
               <th>Customer</th>
               <th>Mobile</th>
               <th>Device</th>
+              <th>Serial Number</th>
               <th>Status</th>
               <th>Cost</th>
               <th>Delivery Date</th>
@@ -632,7 +633,27 @@ function AdminDashboard() {
                 <td>{repair.customer}</td>
                 <td>{repair.mobile}</td>
                 <td>{repair.device}</td>
+                <td>
+                  <input
+                    type="text"
+                    className="edit-input"
+                    placeholder="Enter S/N"
+                    value={repair.serialNumber || ""}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) =>
+                      updateField(
+                        repair.id,
+                        "serialNumber",
+                        e.target.value
+                      )
+                    }
+                    disabled={
+                      repair.status === "Device Not Received"
+                    }
+                  />
+                </td>
                 <td>{repair.status}</td>
+                
                 <td>
                   <input
                     type="text"

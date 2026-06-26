@@ -212,10 +212,12 @@ function UploadMedia() {
         </div>
 
         <button
-            onClick={handleContinue}
-            style={{marginTop:"30px"}}
+          onClick={() => {
+            console.log("Continue clicked");
+            navigate("/extra-items");   // or your next page
+          }}
         >
-        Continue
+          Continue
         </button>
 
       </div>
