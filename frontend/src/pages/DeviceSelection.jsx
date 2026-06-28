@@ -1,8 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function DeviceSelection() {
+  const [showOtherInput, setShowOtherInput] = useState(false);
+
+  const [otherDevice, setOtherDevice] = useState("");
+  const navigate = useNavigate();
+
   const saveDevice = (device) => {
     localStorage.setItem("selectedDevice", device);
+  };
+
+  const saveOtherDevice = () => {
+
+    if (!otherDevice.trim()) {
+      alert("Please enter the device name.");
+      return;
+    }
+
+    localStorage.setItem("selectedDevice", otherDevice);
+
+    navigate("/issue-selection");
   };
 
   return (
@@ -48,11 +66,35 @@ function DeviceSelection() {
           </button>
         </Link>
 
-        <Link to="/issue-selection">
-          <button onClick={() => saveDevice("Other")}>
-            Other
-          </button>
-        </Link>
+        
+        <button
+            onClick={() => setShowOtherInput(true)}
+        >
+          Other
+        </button>
+
+         {showOtherInput && (
+
+          <div className="other-device-box">
+
+              <input
+                  type="text"
+                  placeholder="Enter device name"
+                  value={otherDevice}
+                  onChange={(e)=>setOtherDevice(e.target.value)}
+              />
+
+              <button
+                  className="continue-btn"
+                  onClick={saveOtherDevice}
+              >
+                  Continue
+              </button>
+
+        </div>
+
+        )}
+        
         </div>
         
       </div>

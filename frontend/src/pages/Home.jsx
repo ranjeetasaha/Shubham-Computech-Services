@@ -76,6 +76,7 @@ function Home() {
             <li>Hard Disk Recovery</li>
             <li>CCTV Repair</li>
             <li>UPS Repair</li>
+            <li>Others</li>
           </ul>
         </div>
 
