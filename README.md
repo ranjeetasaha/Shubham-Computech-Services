@@ -17,8 +17,8 @@ Features section for README
 This project is a work in progress and is continuously evolving with new features, performance improvements, and a more scalable architecture.
 
 Tech Stack
-Frontend: React.js, Vite
-Language: JavaScript
-Styling: CSS3
-Storage: Local Storage
-Version Control: Git & GitHub
+Frontend: React.js, Vite, 
+Language: JavaScript, 
+Styling: CSS3, 
+Storage: Local Storage, 
+Version Control: Git & GitHub.
